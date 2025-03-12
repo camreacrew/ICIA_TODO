@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#app {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+header, nav, footer {
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+}
+
+header {
+    border: 1px solid rgb(32, 30, 30);
+}
+
+main {
+    overflow: hidden;
+}
+
+main>* {
+    float: left;
+}
+
+aside {
+    height: 200px;
+    line-height: 200px;
+    width: 100px;
+    background-color: lightgray;
+}
+
+section {
+    min-height: 600px;
+    width: 1000px;
+    padding: 20px;
+}
+
+footer {
+    border: 1px solid darkcyan;
+}
+
+nav {
+    background-color: rgb(68, 65, 65);
+}
+
+nav>ul {
+    list-style: none;
+    overflow: hidden;
+}
+
+nav>ul>li {
+    float: left;
+    width: 120px;
+    background-color: rgb(45, 38, 38);
+}
+
+nav>ul>li>a {
+    text-decoration: none;
+    color: rgb(231, 231, 231);
+    font-weight: bold;
+    display: block;
+}
+
+nav>ul>li>a:hover {
+    color: white;
+    background-color: rgb(83, 83, 83);
+}
