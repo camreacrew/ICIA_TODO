@@ -14,25 +14,25 @@
         <header>ICIA Todos</header>
         <nav>
             <ul>
-                <li>HOME</li>
+                <li><a href="/">HOME</a></li>
                 <li>
                     <a href="/contact/list">연락처</a>
                 </li>
                 <li>
-                    <a href="">가계부</a>
+                    <a href="/finance/list">가계부</a>
                 </li>
                 <li>
-                    <a href="">비품</a>
+                    <a href="/supply/list">비품</a>
                 </li>
                 <li>
-                    <a href="">할일</a>
+                    <a href="/todo/list">할일</a>
                 </li>
             </ul>
         </nav>
         <main>
             <aside>부가정보</aside>
             <section>
-                <form action="/write" method="post">
+                <form action="/contact/write" method="post">
                     <div class="mb-3 mt-3">
                         <label for="text" class="form-label">이름:</label>
                         <input type="text" class="form-control" id="cname" name="cname" placeholder="이름 입력..." required>
@@ -68,7 +68,7 @@
                             <td>{{contact.contact_num}}</td>
                             <td>{{contact.address}}</td>
                             <td>
-                                <form action="/delete" method="post">
+                                <form action="/contact/delete" method="post">
                                     <input type="hidden" name="cno" value="{{contact.cno}}">
                                     <button class="btn btn-danger">삭제</button>
                                 </form>
