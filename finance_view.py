@@ -1,7 +1,7 @@
-from flask import Flask, render_template, redirect, request
+from flask import Blueprint, render_template, redirect, request
 import datetime as dt
 
-finance_app = Flask(__name__)
+finance_app = Blueprint('finance_app', __name__, url_prefix='/finance')
 
 finances=[]
 
@@ -30,6 +30,3 @@ def delete():
         if finance['fno']==fno:
             finances.remove(finance)
     return redirect("/list")
-
-
-finance_app.run(debug=True)
