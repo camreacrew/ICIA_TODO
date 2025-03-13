@@ -21,7 +21,7 @@ def write():
     new_finance = {'fno':fno, 'item':item, 'price':price, 'date':date}
     finances.append(new_finance)
     fno += 1
-    return redirect("/list")
+    return redirect("/finance/list")
 
 @finance_app.route("/delete", methods=['post'])
 def delete():
@@ -29,4 +29,4 @@ def delete():
     for finance in finances:
         if finance['fno']==fno:
             finances.remove(finance)
-    return redirect("/list")
+    return redirect("/finance/list")

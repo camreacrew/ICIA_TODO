@@ -12,13 +12,17 @@
         <header>ICIA TODOS</header>
         <nav>
             <ul>
+                <li><a href="/">HOME</a></li>
+                <li><a href="/contact/list">연락처</a></li>
                 <li><a href="/finance/list">가계부</a></li>
+                <li><a href="/supply/list">비품</a></li>
+                <li><a href="/todo/list">할일</a></li>
             </ul>
         </nav>
         <main>
             <aside>부가정보</aside>
             <section>
-                <form action="/write" method="post">
+                <form action="/finance/write" method="post">
                     <div class="mt-3 mb-3">
                         <label for="item" class="form-lable">지출 항목 :</iabel>
                         <input type="text" class="form-control" id="item" name="item" placeholder="항목 입력..." required>
@@ -50,7 +54,7 @@
                             <td>{{f.price}}</td>
                             <td>{{f.date}}</td>
                             <td>
-                                <form action="/delete" method="post">
+                                <form action="/finance/delete" method="post">
                                     <input type="hidden" name="fno" value="{{f.fno}}">
                                     <button class="btn btn-danger">삭제</button>
                                 </form>
