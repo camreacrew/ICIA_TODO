@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="/static/todo.css">
@@ -9,55 +9,56 @@
 </head>
 <body>
   <div id="app">
-    <header>To-do</header>
+    <header><h1>To-do</h1></header>
     <nav>
       <ul>
-        <li>contact</li>
-        <li>finance</li>
-        <li>supply</li>
-        <li>to-do</li>
+        <li><a href="/">HOME</a></li>
+        <li><a href="/contact/list">contact</a></li>
+        <li><a href="/finance/list">finance</a></li>
+        <li><a href="/supply/list">supply</a></li>
+        <li><a href="/todo/list">to-do</a></li>
       </ul>
     </nav>
     <hr>
-    <form action="/write" method="post">
-      <input type="text" id="title" name=title placeholder="할 일 입력...">
-      <button class="btn btn-dark">추가하기</button>
+    <form action="/todo/write" method="post">
+      <input type="text" id="title" name=title class="form-control" placeholder="할 일 입력...">
+      <button class="btn btn-dark mt-2">추가하기</button>
     </form>
-    <table class="table">
+    <table class="table table-striped">
       <thead>
         <tr>
           <th>no</th>
           <th>todo</th>
           <th>date</th>
-          <th></th>
+          <th>actions</th>
         </tr>
       </thead>
       <tbody>
       {% for todo in todos %}
         <tr>
-          <td>{{todo.tno}}</td>
-        <td>
-          {% if todo.finish==True %}
-          <span class="finish">{{todo.title}}</span>
-          {% else %}
-          <span class="not_finish">{{todo.title}}</span>
-          {% endif %}
-        </td>
-        <td>
-          {{todo.date}}
-        </td>
-        <td>
-          <form action="/finish" method="post">
-            <input type="hidden" name="tno" values="{{todo.tno}}">
-            <button class="btn btn-light">
-              {{"미완료로" if todo.finish==True else "완료로"}}
-            </button>
-          </form>
-          <form action="/delete" method="post">
-            <input type="hidden" name="tno" values="{{todo.tno}}">
-            <button class="btn btn-secondary">삭제</button>
-          </form>
-        </td>
+          <td>{{ todo.tno }}</td>
+          <td>
+            {% if todo.finish==True %}
+            <span class="text-decoration-line-through">{{todo.title}}</span>
+            {% else %}
+            <span class="not_finish">{{todo.title}}</span>
+            {% endif %}
+          </td>
+          <td>
+            {{todo.date}}
+          </td>
+          <td>
+            <form action="/todo/finish" method="post">
+              <input type="hidden" name="tno" value="{{todo.tno}}">
+              <button class="btn {{ 'btn-warning' if todo.finish else 'btn-success' }}">
+                {{"미완료로" if todo.finish==True else "완료로"}}
+              </button>
+            </form>
+            <form action="/todo/delete" method="post">
+              <input type="hidden" name="tno" value="{{todo.tno}}">
+              <button class="btn btn-secondary">삭제</button>
+            </form>
+          </td>
       </tr>
       {% endfor %}
       </tbody>
